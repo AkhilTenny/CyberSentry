@@ -1,0 +1,10 @@
+.head-1{
+  @apply text-gray-700 text-2xl font-bold p-4
+}.head-3{
+  @apply text-black text-lg  font-bold  mt-3 mb-2
+
+}
+
+.content-1{
+  @apply text-black text-lg   
+}
