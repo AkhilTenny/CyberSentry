@@ -1,9 +1,9 @@
 import React from 'react'
 import TopHeaderBar from '../../components/TopHeaderBar'
-import Thumbnail from '../../assets/Task Thumbnails/task1.png'
+import Thumbnail from '../../assets/Task Thumbnails/module1.png'
 import {motion} from 'framer-motion'
-import './module.css'
-import TerminalView from '../../components/TerminalView'
+import TerminalView from '../../components/moduleTasks/TerminalView'
+import ThumbnailHeader from '../../components/moduleTasks/ThumbnailHeader'
 
 
 function Module1() {
@@ -11,25 +11,7 @@ function Module1() {
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
       <div className='w-3/4  flex flex-col items-center'>
-        <motion.div 
-          initial={{
-            x:-200,
-            opacity:0
-          }}
-          animate={{
-            x:0,opacity:1
-          }}
-          className={ `overflow-hidden w-full h-64 flex justify-center items-center bg-center bg-cover rounded-b-3xl shadow-2xl`} 
-          style={{backgroundImage: `url(${Thumbnail})`}}>
-            <div className='w-full h-full flex  bg-black bg-opacity-55 '>
-              <h1 className='text-white text-2xl font-bold mt-2 ml-3'>Module: 01</h1>
-              <div className='h-full flex items-center'>
-               <h1 className='text-white text-5xl font-bold '>Setting Up Kali Linux in a Virtual Machine</h1>
-
-              </div>
-            </div>
-          
-        </motion.div>
+        <ThumbnailHeader Thumbnail={Thumbnail} index={'01'} title={"Setting Up Kali Linux in a Virtual Machine"}/>
         <motion.div
           initial={{
             x:200,
@@ -92,7 +74,7 @@ function Module1() {
             <li>Windows: Open Task Manager → Go to Performance Tab → Look for "Virtualization: Enabled".</li>
             <li>Linux: Run in terminal:</li>
           </ul>
-          <TerminalView title={"bash"} body={"lscpu | grep Virtualization"}/>
+          <TerminalView title={"bash"} body={["lscpu | grep Virtualization"]}/>
           <p className='content-1'>If enabled, you’ll see VT-x (Intel) or AMD-V (AMD).
           ⚠️ If Disabled: Enable it in BIOS (Restart → Press F2 / DEL → Find "Virtualization Technology" → Enable it).</p>
 
@@ -113,7 +95,7 @@ function Module1() {
           <p className='head-3'>
           Linux Users: Install VirtualBox via Terminal:
           </p>
-          <TerminalView title={"bash"} body={"sudo apt install virtualbox -y "}/>
+          <TerminalView title={"bash"} body={["sudo apt install virtualbox -y "]}/>
 
 
 <div class="container">

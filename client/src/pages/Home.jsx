@@ -1,7 +1,7 @@
 import React from 'react'
 import LeftSideLeaderBoard from '../components/LeftSideLeaderBoard'
 import TopHeaderBar from '../components/TopHeaderBar'
-import Task1 from '../components/taskThumbnails/Task1'
+import TaskThumbnail from '../components/TaskThumbnail'
 
 
 
@@ -12,8 +12,9 @@ function Home() {
       <div className='flex w-full flex-col'>
       <TopHeaderBar/>
       <div className='grid grid-cols-3 w-full mt-5'>
-        <Task1/>
-        
+        <TaskThumbnail module={"module1"} title={"1. Setting Up Kali Linux in a Virtual Machine"}  />
+        <TaskThumbnail module={"module2"} title={"2. Learn Linux Commands"}  />
+
       </div>
       </div>
       

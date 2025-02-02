@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import { TokenProvider } from './context/TokenContext';
 import Account from './pages/Account';
 import Module1 from './pages/modulesPages/Module1';
+import Module2 from './pages/modulesPages/Module2';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
               <Route path="/signUp" element={<SignUp/>}  />
               <Route path='/account' element={<Account/>}/>
               <Route path='/module1' element={<Module1/>}/>
+              <Route path='/module2' element={<Module2/>}/>
+
 
           </Routes>
         
