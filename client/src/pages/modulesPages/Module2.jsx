@@ -8,6 +8,7 @@ import TerminalView from '../../components/moduleTasks/TerminalView'
 import DownloadFile from "../../assets/LinuxCommands_Challenge.zip"
 import taskfolderShot from "../../assets/screenshots/module2/taskFiles.png"
 import Module1Input from '../../components/moduleTasks/Module1Input'
+import Module1Hint from '../../components/moduleTasks/Module1Hint'
 
 
 function Module2() {
@@ -33,7 +34,7 @@ function Module2() {
               <h1 className='head-1'>&#8226; Why should you learn linux commands</h1>
               <h1 className='content-1'>Learning Linux commands is essential for cybersecurity because most security tools, servers, and hacking environments are built on Linux. Ethical hacking and penetration testing rely on Linux-based tools like Kali Linux, Metasploit, Nmap, and Wireshark, which require command-line usage to automate attacks, scans, and exploitation. Digital forensics and incident response also depend on Linux commands for analyzing logs, investigating failed logins, and monitoring processes. Security professionals use Linux to harden servers, enforce file permissions, and secure networks through firewall configurations and SSH management. Bash scripting helps automate security tasks like log monitoring, brute force detection, and network analysis. Additionally, many privilege escalation techniques involve exploiting Linux misconfigurations using commands like sudo, find, and cron jobs. Linux is also widely used for configuring firewalls, proxies, and intrusion detection systems, making it critical for network security. Capture The Flag (CTF) challenges and cybersecurity competitions heavily depend on Linux for tasks like finding hidden flags, cracking passwords, and exploiting vulnerabilities. Overall, mastering Linux gives you full control over systems, networks, and security tools, making it a crucial skill for any ethical hacker or cybersecurity professional.</h1>
               
-              <h1 className='head-1'>&#8226; Before getting started with the tasks Lets learn some basic linux commands</h1>
+              <h1 className='head-1'>&#8226; Lets learn some basic linux commands</h1>
 
               <h1 className='content-1'><snap className="bg-yellow-500 p-1">ls</snap> – List files in a directory</h1>
               <TerminalView title="bash" body={["ls -l   # Detailed list with permissions",'ls -a   # Show hidden files']}/>
@@ -84,24 +85,66 @@ function Module2() {
 
               </div>
               {/* task 1 */}
-              <div>
+              <div className='flex flex-col task'>
 
-                <h1 className="head-1">Task 1 </h1>
+                <h1 className="head-1">Task 1: Open hidden a file</h1>
                 <h1 className="content-1">&#8226; Go to the Task 1 directory using <snap className="bg-yellow-500 p-1">cd</snap> command </h1>
                 <h1 className="head-3">Commands to learn</h1>
                 <h1> <snap className="bg-yellow-500 p-1">ls -a</snap> - to show hidden files in the directory </h1>
                 <h1> <snap className="bg-yellow-500 p-1">cat </snap> - to open and the text inside a file </h1>
 
-                <h1 className="head-3">Hint:</h1>
-                <h1 className='content-1'>&#8226; go to hiddenFolder -> thekeyishere</h1>
+                <h1 className="head-3">Instructions:</h1>
+                <h1 className='content-1'>&#8226; go to hiddenFolder -&gt; thekeyishere</h1>
                 <h1 className="content-1">&#8226;   then open the hidden file inside</h1>
+
+                <Module1Hint/>
                 <Module1Input/>
 
               </div>
 
               {/* task 2 */}
-              
-             
+
+              <div className='task'>
+              <h1 className="head-1">Task 2: Searching for the Key in a File </h1>
+              <h1 className="content-1">&#8226; Go to the Task 2 directory using <snap className="bg-yellow-500 p-1">cd</snap> command </h1>
+              <h1 className="head-3">Commands to learn</h1>
+                <h1> <snap className="bg-yellow-500 p-1">grep</snap> - to search for specific patterns in files or text streams </h1>
+
+                <h1 className="head-3">Instructions:</h1>
+                <h1 className='content-1'>&#8226; The key is hidden inside a file.</h1>
+                <h1 className="content-1">&#8226; Use <snap className="bg-yellow-500 p-1">grep</snap>  to search for the word "L1Xs" inside all files.</h1>
+                <Module1Input/>
+               </div>
+
+               {/* task 3 */}
+
+               <div className='task'>
+              <h1 className="head-1">Task 3: Finding the Key in Nested Folders </h1>
+              <h1 className="content-1">&#8226; Go to the Task 3 directory using <snap className="bg-yellow-500 p-1">cd</snap> command </h1>
+              <h1 className="head-3">Commands to learn</h1>
+                <h1> <snap className="bg-yellow-500 p-1">find</snap> - to search for files and directories within a specified path based on various criteria like name, type, size, modification date, permissions, and more </h1>
+
+                <h1 className="head-3">Instructions:</h1>
+                <h1 className='content-1'>&#8226; The key is buried deep in folders.</h1>
+                <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">find</snap> to locate a file named secretKey.txt</h1>
+                <Module1Input/>
+               </div>
+
+                 {/* task 3 */}
+
+                 <div className='task'>
+              <h1 className="head-1">Task 4: Finding a Hidden Key in a Compressed File  </h1>
+              <h1 className="content-1">&#8226; Go to the Task 4 directory using <snap className="bg-yellow-500 p-1">cd</snap> command </h1>
+              <h1 className="head-3">Commands to learn</h1>
+                <h1> <snap className="bg-yellow-500 p-1">tar</snap> - to create and manage archive files</h1>
+
+                <h1 className="head-3">Instructions:</h1>
+                <h1 className='content-1'>&#8226; A compressed file (secretKey.tar.gz) contains the key.</h1>
+                <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">tar</snap> to extract the folder</h1>
+                <Module1Input/>
+               </div>
+
+               
 
 
 

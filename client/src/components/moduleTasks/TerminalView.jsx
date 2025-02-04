@@ -8,7 +8,7 @@ function TerminalView(props) {
         <div className='bg-gray-600 pl-4 pt-1'>
           <h1>{props.title}</h1>
         </div>
-        <div className='bg-gray-900 p-4 '>
+        <div className='bg-gray-900 p-4 cursor-text'>
           {body.map((item) =>
             <h1>
             {item}
