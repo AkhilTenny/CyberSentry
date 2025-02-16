@@ -22,7 +22,7 @@ function TerminalHint(props) {
       <div className='bg-red-500 text-lg  pb-4 pl-3 rounded-xl py-1 font-bold  mt-5 shadow-xl'>
         <button className='px-2 mt-2 bg-white rounded-lg' onClick={changeState}>x</button>
         
-        <TerminalView title={"bash"}  body={[props.body]}/>
+        <TerminalView title={"bash"}  body={props.body}/>
       </div>
 
     }

@@ -24,5 +24,5 @@
 }
 
 .task{
-  @apply rounded-xl border-2 border-sky-600 p-4 mt-6
+  @apply rounded-3xl border-2 border-sky-600 p-4 mt-6 shadow-xl bg-blue-50
 }

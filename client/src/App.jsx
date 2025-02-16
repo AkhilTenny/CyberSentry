@@ -8,6 +8,7 @@ import Account from './pages/Account';
 import Module1 from './pages/modulesPages/Module1';
 import Module2 from './pages/modulesPages/Module2';
 import Module3 from './pages/modulesPages/Module3';
+import Module4 from './pages/modulesPages/Module4';
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
               <Route path='/module1' element={<Module1/>}/>
               <Route path='/module2' element={<Module2/>}/>
               <Route path='/module3' element={<Module3/>}/>
+              <Route path='/module4' element={<Module4/>}/>
+
 
 
           </Routes>

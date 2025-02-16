@@ -8,7 +8,7 @@ import TerminalView from '../../components/moduleTasks/TerminalView'
 import DownloadFile from "../../assets/LinuxCommands_Challenge.zip"
 import taskfolderShot from "../../assets/screenshots/module2/taskFiles.png"
 import Module1Input from '../../components/moduleTasks/Module1Input'
-import Module1Hint from '../../components/moduleTasks/Module1Hint'
+import TerminalHint from '../../components/moduleTasks/TerminalHint'
 
 
 function Module2() {
@@ -97,7 +97,7 @@ function Module2() {
                 <h1 className='content-1'>&#8226; go to hiddenFolder -&gt; thekeyishere</h1>
                 <h1 className="content-1">&#8226;   then open the hidden file inside</h1>
 
-                <Module1Hint/>
+                <TerminalHint body={["cd hiddenFolder","cd thekeyishere","cat .secretkey"]} />
                 <Module1Input/>
 
               </div>
@@ -113,6 +113,7 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; The key is hidden inside a file.</h1>
                 <h1 className="content-1">&#8226; Use <snap className="bg-yellow-500 p-1">grep</snap>  to search for the word "L1Xs" inside all files.</h1>
+                <TerminalHint body={["cat * | grep L1Xs"]} />
                 <Module1Input/>
                </div>
 
@@ -127,6 +128,8 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; The key is buried deep in folders.</h1>
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">find</snap> to locate a file named secretKey.txt</h1>
+                <TerminalHint body={["find ./* -name secretKey.txt"]} />
+
                 <Module1Input/>
                </div>
 
@@ -141,6 +144,8 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; A compressed file (secretKey.tar.gz) contains the key.</h1>
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">tar</snap> to extract the folder</h1>
+                <TerminalHint body={["tar -xzf secretKey.tar.gz","cat secretKey.txt"]} />
+
                 <Module1Input/>
                </div>
 
