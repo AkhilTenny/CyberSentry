@@ -2,7 +2,6 @@ import React from 'react'
 
 function TerminalView(props) {
   const body = props.body
-  console.log(body)
   return (
     <div className=' w-full flex justify-center mt-5 mb-5 font-mono'>
       <div className='text-white w-3/4 rounded-xl overflow-hidden'>

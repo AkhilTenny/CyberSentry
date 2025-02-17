@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const moduleSchema = mongoose.Schema({
+const moduleSchema = new mongoose.Schema({
   moduleNo:Number,
   userId:String,
   task1:Boolean,
@@ -11,4 +11,6 @@ const moduleSchema = mongoose.Schema({
   task6:Boolean
 })
 
-module.exports={moduleSchema}
+const moduleModal = new mongoose.model("module",moduleSchema)
+
+module.exports={moduleModal}

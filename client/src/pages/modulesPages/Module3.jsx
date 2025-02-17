@@ -104,7 +104,7 @@ function Module3() {
                 <h1 className="content-1 font-bold">Output:</h1>
                 <img src={Task1Screenshot} alt="" />
               </ul>
-              <TerminalHint body={"nmap -sn scanme.nmap.org"}/>
+              <TerminalHint body={["nmap -sn scanme.nmap.org"]}/>
 
             </div>
 
@@ -119,7 +119,7 @@ function Module3() {
                 <li>Submit the list of open ports as the answer.</li>
                
               </ul>
-              <TerminalHint body={"nmap scanme.nmap.org"}/>
+              <TerminalHint body={["nmap scanme.nmap.org"]}/>
 
 
             </div>
@@ -134,7 +134,7 @@ function Module3() {
                 <li>Submit the name of the web service (like Apache, Nginx, etc.) running on port 80.</li>
                
               </ul>
-              <TerminalHint body={"nmap -sV scanme.nmap.org"}/>
+              <TerminalHint body={["nmap -sV scanme.nmap.org"]}/>
 
 
             </div>
@@ -148,7 +148,7 @@ function Module3() {
                 <li>Submit the name of the web service (like Apache, Nginx, etc.) running on port 80.</li>
                
               </ul>
-              <TerminalHint body={"nmap -sV scanme.nmap.org"}/>
+              <TerminalHint body={["nmap -sV scanme.nmap.org"]}/>
 
 
             </div>
@@ -162,7 +162,7 @@ function Module3() {
                   <li>Submit the detected operating system name as the answer.</li>
                 
                 </ul>
-                <TerminalHint body={"nmap -O scanme.nmap.org"}/>
+                <TerminalHint body={["nmap -O scanme.nmap.org"]}/>
 
 
              </div>
@@ -176,8 +176,8 @@ function Module3() {
                     <li>Submit if a firewall was detected or not.</li>
                   
                   </ul>
-                  <TerminalHint body={"nmap --script firewall-bypass scanme.nmap.org"}/>
-
+                  <TerminalHint body={["nmap --script firewall-bypass scanme.nmap.org"]}/>
+]
 
             </div>
 

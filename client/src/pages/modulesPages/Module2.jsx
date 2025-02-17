@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Thumbnail from "../../assets/Task Thumbnails/module2.png"
 import ThumbnailHeader from '../../components/moduleTasks/ThumbnailHeader'
 import TopHeaderBar from '../../components/TopHeaderBar'
@@ -9,9 +9,22 @@ import DownloadFile from "../../assets/LinuxCommands_Challenge.zip"
 import taskfolderShot from "../../assets/screenshots/module2/taskFiles.png"
 import Module1Input from '../../components/moduleTasks/Module1Input'
 import TerminalHint from '../../components/moduleTasks/TerminalHint'
+import {useTaskApi} from "../../actions/api/useTaskApi"
 
 
 function Module2() {
+  const {getTaskInfo} = useTaskApi();
+    const [taskInfo,setTaskInfo] = useState({})
+  useEffect(()=>{
+    getTaskInfo(2).then(res=>{
+      setTaskInfo(res)
+
+    }).catch(err=>{
+      setTaskInfo({err:"hai"})
+    })
+    
+  },[])
+
   return (
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
@@ -98,7 +111,7 @@ function Module2() {
                 <h1 className="content-1">&#8226;   then open the hidden file inside</h1>
 
                 <TerminalHint body={["cd hiddenFolder","cd thekeyishere","cat .secretkey"]} />
-                <Module1Input/>
+                <Module1Input taskIndex={1} status={taskInfo.task1 || false}/>
 
               </div>
 
@@ -114,7 +127,7 @@ function Module2() {
                 <h1 className='content-1'>&#8226; The key is hidden inside a file.</h1>
                 <h1 className="content-1">&#8226; Use <snap className="bg-yellow-500 p-1">grep</snap>  to search for the word "L1Xs" inside all files.</h1>
                 <TerminalHint body={["cat * | grep L1Xs"]} />
-                <Module1Input/>
+                <Module1Input taskIndex={2} status={taskInfo.task2 || false}/>
                </div>
 
                {/* task 3 */}
@@ -130,7 +143,7 @@ function Module2() {
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">find</snap> to locate a file named secretKey.txt</h1>
                 <TerminalHint body={["find ./* -name secretKey.txt"]} />
 
-                <Module1Input/>
+                <Module1Input taskIndex={3} status={taskInfo.task3 || false}/>
                </div>
 
                  {/* task 3 */}
@@ -146,7 +159,7 @@ function Module2() {
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">tar</snap> to extract the folder</h1>
                 <TerminalHint body={["tar -xzf secretKey.tar.gz","cat secretKey.txt"]} />
 
-                <Module1Input/>
+                <Module1Input taskIndex={4} status={taskInfo.task4 || false}/>
                </div>
 
                
