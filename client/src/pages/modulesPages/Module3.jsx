@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TopHeaderBar from '../../components/TopHeaderBar'
 import ThumbnailHeader from '../../components/moduleTasks/ThumbnailHeader'
 import Thumbnail from "../../assets/Task Thumbnails/module3.png"
@@ -7,13 +7,29 @@ import SyberSentryTip from '../../components/SyberSentryTip'
 import TerminalView from '../../components/moduleTasks/TerminalView'
 import Task1Screenshot from "../../assets/screenshots/module3/task1.1.png"
 import TerminalHint from '../../components/moduleTasks/TerminalHint'
+import Module3Input from '../../components/moduleTasks/Module3Input'
+import { useTaskApi } from '../../actions/api/useTaskApi'
 
 
 
 
 
 
-function Module3() {
+
+function Module3() { 
+  const {getTaskInfo} = useTaskApi();
+  const [taskInfo,setTaskInfo] = useState({})
+
+ useEffect(()=>{
+    getTaskInfo(3).then(res=>{
+      setTaskInfo(res)
+
+    }).catch(err=>{
+      setTaskInfo({err:"hai"})
+    })
+    
+  },[])
+  
   return (
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
@@ -105,6 +121,8 @@ function Module3() {
                 <img src={Task1Screenshot} alt="" />
               </ul>
               <TerminalHint body={["nmap -sn scanme.nmap.org"]}/>
+              <Module3Input taskIndex={1} status={taskInfo.task1 || null}/>
+
 
             </div>
 
@@ -120,7 +138,9 @@ function Module3() {
                
               </ul>
               <TerminalHint body={["nmap scanme.nmap.org"]}/>
+              <Module3Input taskIndex={2} status={taskInfo.task2 || null}/>
 
+ 
 
             </div>
 
@@ -130,64 +150,33 @@ function Module3() {
             <h1 className="head-1">Task 3: Perform a Service Scan</h1>
               <h1 className="head-3">Task Instructions:</h1>
               <ul className='list-disc pl-5 content-1'>
-                <li>Run a service scan on scanme.nmap.org.</li>
-                <li>Submit the name of the web service (like Apache, Nginx, etc.) running on port 80.</li>
+                <li>Browse and Find the [option] in nmap to perform a service scan on an ip.</li>
+                <li>Enter the option below.</li>
                
               </ul>
               <TerminalHint body={["nmap -sV scanme.nmap.org"]}/>
+              <Module3Input taskIndex={3} status={taskInfo.task3 || null}/>
 
-
-            </div>
-             {/* task3 */}
-            <div className='task'>
-
-            <h1 className="head-1">Task 3: Perform a Service Scan</h1>
-              <h1 className="head-3">Task Instructions:</h1>
-              <ul className='list-disc pl-5 content-1'>
-                <li>Run a service scan on scanme.nmap.org.</li>
-                <li>Submit the name of the web service (like Apache, Nginx, etc.) running on port 80.</li>
-               
-              </ul>
-              <TerminalHint body={["nmap -sV scanme.nmap.org"]}/>
 
 
             </div>
-            {/* task3 */}
+           
+            {/* task4 */}
             <div className='task'>
 
               <h1 className="head-1"> Task 4: Detect OS of a Target</h1>
                 <h1 className="head-3">Task Instructions:</h1>
                 <ul className='list-disc pl-5 content-1'>
-                  <li>Run an OS detection scan on scanme.nmap.org.</li>
-                  <li>Submit the detected operating system name as the answer.</li>
+                <li>Browse and Find the [option] in nmap to perform a os (operating system) scan on an ip.</li>
+                <li>Enter the option below.</li>
                 
                 </ul>
                 <TerminalHint body={["nmap -O scanme.nmap.org"]}/>
+                <Module3Input taskIndex={4} status={taskInfo.task4 || null}/>
+
 
 
              </div>
-           {/* task3 */}
-            <div className='task'>
-
-                <h1 className="head-1"> Task 5: Scan for Firewalls</h1>
-                  <h1 className="head-3">Task Instructions:</h1>
-                  <ul className='list-disc pl-5 content-1'>
-                    <li>Scan scanme.nmap.org for firewall detection.</li>
-                    <li>Submit if a firewall was detected or not.</li>
-                  
-                  </ul>
-                  <TerminalHint body={["nmap --script firewall-bypass scanme.nmap.org"]}/>
-]
-
-            </div>
-
-
-
-
-
-
-
-
 
           </div>
 

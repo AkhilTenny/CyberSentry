@@ -11,7 +11,7 @@ export const useTaskApi=()=>{
   }
 
 
-  const checkModule1Task=(inputValue,taskIndex)=>{
+  const checkModule2Task=(inputValue,taskIndex)=>{
     return new Promise((resolve, reject) => {
       axios.post('task/checkModule1',{key:inputValue,taskIndex:taskIndex,moduleNo:2},{headers}).then(res=>{
         resolve(res.data)
@@ -34,9 +34,23 @@ export const useTaskApi=()=>{
     
   }
 
+  const checkModule3Task=(inputValue,taskIndex)=>{
+    return new Promise((resolve, reject) => {
+      console.log(inputValue,taskIndex)
+      axios.post('task/checkModule3',{input:inputValue,taskIndex:taskIndex,moduleNo:3},{headers}).then(res=>{
+        resolve(res.data)
+      }).catch(err=>{
+        resolve(false)
+      })
+    })
+    
+  }
+
   return{
-    checkModule1Task,
-    getTaskInfo
+    checkModule2Task,
+    getTaskInfo,
+    checkModule3Task,
+
 
   }
 

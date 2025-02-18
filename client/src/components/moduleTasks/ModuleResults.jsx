@@ -3,17 +3,25 @@ import { useTaskApi } from '../../actions/api/useTaskApi'
 
 function ModuleResults(props) {
 
-  const {checkModule1Task} = useTaskApi();
+  const {checkModule2Task,checkModule3Task} = useTaskApi();
 
   const [result,setResult] = useState(false);
 
+  const checkTask = {
+    2:checkModule2Task,
+    3:checkModule3Task
+  }
+
   useEffect(()=>{
-    checkModule1Task(props.inputValue,props.taskIndex).then(res=>{
+    checkTask[props.moduleNo](props.inputValue,props.taskIndex).then(res=>{
       setResult(res)
 
       setTimeout(()=>{
         props.closeModal()
-        props.status(true)
+        if(res.result){
+          props.status(true)
+
+        }
 
 
       },3000)
