@@ -1,12 +1,31 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import TopHeaderBar from '../../components/TopHeaderBar'
 import Thumbnail from '../../assets/Task Thumbnails/module1.png'
 import {motion} from 'framer-motion'
 import TerminalView from '../../components/moduleTasks/TerminalView'
 import ThumbnailHeader from '../../components/moduleTasks/ThumbnailHeader'
+import Module1Input from '../../components/moduleTasks/Module1Input'
+import { useTaskApi } from '../../actions/api/useTaskApi'
+
 
 
 function Module1() {
+  const {getTaskInfo} = useTaskApi();
+
+  const [taskInfo,setTaskInfo] = useState({})
+
+    useEffect(()=>{
+      getTaskInfo(1).then(res=>{
+        setTaskInfo(res)
+  
+      }).catch(err=>{
+        setTaskInfo({err:"err"})
+      })
+
+      
+    },[])
+
+
   return (
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
@@ -97,6 +116,8 @@ function Module1() {
           </p>
           <TerminalView title={"bash"} body={["sudo apt install virtualbox -y "]}/>
 
+          <Module1Input score={4} taskIndex={1} status={ taskInfo.task1 || false}/>
+
 
 <div class="container">
     <h1 className='head-1'>&#8226; How to Install Kali Linux on a Virtual Machine</h1>
@@ -152,6 +173,8 @@ function Module1() {
     </ul>
 
     <h2 className='head-3'>Kali Linux is Now Ready!</h2>
+    <Module1Input score={4} taskIndex={2} status={ taskInfo.task2 || false}/>
+
     <p className='head-3'>You have successfully installed Kali Linux on a Virtual Machine.</p>
 </div>
 

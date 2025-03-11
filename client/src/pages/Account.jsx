@@ -12,7 +12,7 @@ function Account() {
  
   
   const {getUserInfo} = useApi();
-  const {userToken} = useToken();
+  const {userToken,tokenSignOut} = useToken();
 
   const [usernameEditModal,setUsernameEditModal] = useState(false);
   const [avatarEditModal,setAvatarEditModal] =useState(false);
@@ -31,6 +31,10 @@ function Account() {
  
      })
    },[])
+
+   function userLogout(){
+    tokenSignOut();
+   }
 
    function changeEditModal(item){
     console.log("hai",item)
@@ -86,6 +90,9 @@ function Account() {
             <h1 className='text-2xl underline'>{userInfo.userId}</h1>
          
           </div>
+          <button type='button' 
+            onClick={userLogout}
+            className='text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 '>LOGOUT</button>
         </div>
       </div>
         {

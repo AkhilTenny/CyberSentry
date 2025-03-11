@@ -2,12 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import ModuleResults from './ModuleResults';
 
 
-function Module3Input(props) {
+function Module4Input(props) {
   const [status,setStatus] = useState(props.status) ;
   const [input,setInput] = useState(null)
   const [modal,setModal] = useState(false);
   const keyInput = useRef();
-
   
 
   useEffect(()=>{
@@ -46,7 +45,7 @@ function Module3Input(props) {
             className="text-white bg-green-600 text-lg  px-2 rounded-xl py-1 font-bold ml-3">Check</button>
             {
             modal&&
-              <ModuleResults  closeModal={changeCheckModal} moduleNo={3} inputValue={input} score={props.score} taskIndex={props.taskIndex} status={changeStatus}/>
+              <ModuleResults score={props.score} closeModal={changeCheckModal} moduleNo={4} inputValue={input} taskIndex={props.taskIndex} status={changeStatus}/>
            }
       </div>
     }
@@ -56,4 +55,4 @@ function Module3Input(props) {
   )
 }
 
-export default Module3Input
+export default Module4Input

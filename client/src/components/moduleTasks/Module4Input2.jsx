@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import ModuleResults from './ModuleResults';
 
 
-function Module3Input(props) {
+function Module4Input2(props) {
   const [status,setStatus] = useState(props.status) ;
-  const [input,setInput] = useState(null)
+  const [input,setInput] = useState({})
   const [modal,setModal] = useState(false);
-  const keyInput = useRef();
+  const keyInputUsername = useRef();
+  const keyInputPassword= useRef();
 
   
 
@@ -15,7 +16,9 @@ function Module3Input(props) {
   },[props.status])
 
   function checkInput(){
-    setInput(keyInput.current.value);
+    setInput({username:keyInputUsername.current.value,
+      password:keyInputPassword.current.value
+    });
     setModal(!modal)
     
   }
@@ -38,15 +41,20 @@ function Module3Input(props) {
 
       </div>
       :
-      <div>
-          <h1 className=" text-white text-2xl font-bold ">Enter {props.item} here:</h1>
-          <input ref={keyInput} className='p-1 rounded-lg bg-purple-200 text-black focus:outline-none' placeholder='Enter key' type="text" />
-          <button 
+      <div className='flex items-end justify-between w-full'>
+        <div>
+           <h1 className=" text-white text-2xl font-bold ">Enter username here:</h1>
+          <input ref={keyInputUsername} className='p-1 rounded-lg bg-purple-200 text-black focus:outline-none' placeholder='Enter key' type="text" />
+          <h1 className=" text-white text-2xl font-bold ">Enter password here:</h1>
+          <input ref={keyInputPassword} className='p-1 rounded-lg bg-purple-200 text-black focus:outline-none' placeholder='Enter key' type="text" />
+          
+        </div> 
+        <button 
             onClick={checkInput}
             className="text-white bg-green-600 text-lg  px-2 rounded-xl py-1 font-bold ml-3">Check</button>
             {
             modal&&
-              <ModuleResults  closeModal={changeCheckModal} moduleNo={3} inputValue={input} score={props.score} taskIndex={props.taskIndex} status={changeStatus}/>
+              <ModuleResults score={props.score} closeModal={changeCheckModal} moduleNo={4} inputValue={input} taskIndex={props.taskIndex} status={changeStatus}/>
            }
       </div>
     }
@@ -56,4 +64,4 @@ function Module3Input(props) {
   )
 }
 
-export default Module3Input
+export default Module4Input2

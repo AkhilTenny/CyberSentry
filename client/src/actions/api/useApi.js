@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://localhost:4000';
 
 export const  useApi=()=>{
 
-  const {userToken} = useToken();
+  const {userToken,tokenSignOut} = useToken();
 
   const headers = {
     "Content-Type": "application/json",
@@ -26,6 +26,9 @@ export const  useApi=()=>{
     })
    } 
 
+   function userSignOut(){
+    tokenSignOut();
+   }
 
    function userSignIn(details){
     return new Promise((resolve, reject) => {

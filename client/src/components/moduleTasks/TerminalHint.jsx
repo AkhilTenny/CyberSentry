@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import TerminalView from './TerminalView';
-import {motion} from 'framer-motion'
 
 
 function TerminalHint(props) {
@@ -12,7 +11,11 @@ function TerminalHint(props) {
     <>
     {
       state?
-      <div onClick={changeState} className='mt-5 mb-5'>
+      <div onClick={()=>{
+        changeState();
+        props.reduceScore(props.taskIndex)
+        
+        }} className='mt-5 mb-5'>
       <button className="text-white bg-red-600 text-lg  px-2 rounded-xl py-1 font-bold ">Show hint</button>
 
   

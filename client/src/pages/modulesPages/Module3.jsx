@@ -9,6 +9,8 @@ import Task1Screenshot from "../../assets/screenshots/module3/task1.1.png"
 import TerminalHint from '../../components/moduleTasks/TerminalHint'
 import Module3Input from '../../components/moduleTasks/Module3Input'
 import { useTaskApi } from '../../actions/api/useTaskApi'
+import { useModuleNames } from '../../info/moduleNames'
+
 
 
 
@@ -20,21 +22,44 @@ function Module3() {
   const {getTaskInfo} = useTaskApi();
   const [taskInfo,setTaskInfo] = useState({})
 
+  const {module3Name} = useModuleNames();
+
+   const [task1Score,settask1Score] = useState(4);
+    const [task2Score,settask2Score] = useState(4);
+    const [task3Score,settask3Score] = useState(4);
+    const [task4Score,settask4Score] = useState(4);
+  
+  
+
  useEffect(()=>{
     getTaskInfo(3).then(res=>{
       setTaskInfo(res)
 
     }).catch(err=>{
-      setTaskInfo({err:"hai"})
+      setTaskInfo({err:"err"})
     })
     
   },[])
+
+  //function to reduce the taskscore if user used the hint of a specefic task
+  function reduceScore(taskIndex){
+
+    const task={
+      1:settask1Score,
+      2:settask2Score,
+      3:settask3Score,
+      4:settask4Score
+    }
+    //reduce the taskscore or appropriate task
+    task[taskIndex](2);
+    
+  }
   
   return (
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
       <div className='w-3/4 flex flex-col items-center'>
-        <ThumbnailHeader Thumbnail={Thumbnail} title={"Master Nmap tool"} index={"03"}/>
+        <ThumbnailHeader Thumbnail={Thumbnail} title={module3Name} index={"03"}/>
         <motion.div
           initial={{
             x:200,
@@ -120,8 +145,8 @@ function Module3() {
                 <h1 className="content-1 font-bold">Output:</h1>
                 <img src={Task1Screenshot} alt="" />
               </ul>
-              <TerminalHint body={["nmap -sn scanme.nmap.org"]}/>
-              <Module3Input taskIndex={1} status={taskInfo.task1 || null}/>
+              <TerminalHint reduceScore={reduceScore} taskIndex={1}  body={["nmap -sn scanme.nmap.org"]}/>
+              <Module3Input score={task1Score} taskIndex={1} status={taskInfo.task1 || null} item={"result"}/>
 
 
             </div>
@@ -137,8 +162,8 @@ function Module3() {
                 <li>Submit the list of open ports as the answer.</li>
                
               </ul>
-              <TerminalHint body={["nmap scanme.nmap.org"]}/>
-              <Module3Input taskIndex={2} status={taskInfo.task2 || null}/>
+              <TerminalHint reduceScore={reduceScore} taskIndex={2}  body={["nmap scanme.nmap.org"]}/>
+              <Module3Input score={task2Score} taskIndex={2} status={taskInfo.task2 || null} item={"result"}/>
 
  
 
@@ -154,8 +179,8 @@ function Module3() {
                 <li>Enter the option below.</li>
                
               </ul>
-              <TerminalHint body={["nmap -sV scanme.nmap.org"]}/>
-              <Module3Input taskIndex={3} status={taskInfo.task3 || null}/>
+              <TerminalHint reduceScore={reduceScore} taskIndex={3}  body={["nmap -sV scanme.nmap.org"]}/>
+              <Module3Input score={task3Score} taskIndex={3} status={taskInfo.task3 || null} item={"option"}/>
 
 
 
@@ -171,8 +196,8 @@ function Module3() {
                 <li>Enter the option below.</li>
                 
                 </ul>
-                <TerminalHint body={["nmap -O scanme.nmap.org"]}/>
-                <Module3Input taskIndex={4} status={taskInfo.task4 || null}/>
+                <TerminalHint reduceScore={reduceScore} taskIndex={4} body={["nmap -O scanme.nmap.org"]}/>
+                <Module3Input score={task4Score} taskIndex={4} status={taskInfo.task4 || null} item={"option"}/>
 
 
 

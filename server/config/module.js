@@ -8,7 +8,8 @@ const moduleSchema = new mongoose.Schema({
   task3:Boolean,
   task4:Boolean,
   task5:Boolean,
-  task6:Boolean
+  task6:Boolean,
+  score:{type:Number,default:0}
 })
 
 const moduleModal = new mongoose.model("module",moduleSchema)

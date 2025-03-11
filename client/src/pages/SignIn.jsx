@@ -29,7 +29,6 @@ function SignIn() {
   }
   function signInAction(){
     userSignIn(details).then(res=>{
-      console.log(res)
       loginReturnSuccess(res)
     }).catch(err=>{
       loginReturnError(err)

@@ -7,29 +7,53 @@ import SyberSentryTip from '../../components/SyberSentryTip'
 import TerminalView from '../../components/moduleTasks/TerminalView'
 import DownloadFile from "../../assets/LinuxCommands_Challenge.zip"
 import taskfolderShot from "../../assets/screenshots/module2/taskFiles.png"
-import Module1Input from '../../components/moduleTasks/Module1Input'
+import Module2Input from '../../components/moduleTasks/Module2Input'
 import TerminalHint from '../../components/moduleTasks/TerminalHint'
 import {useTaskApi} from "../../actions/api/useTaskApi"
+import { useModuleNames } from '../../info/moduleNames'
+
 
 
 function Module2() {
   const {getTaskInfo} = useTaskApi();
+  const {module2Name}  = useModuleNames();
+  
+  const [task1Score,settask1Score] = useState(4);
+  const [task2Score,settask2Score] = useState(4); 
+  const [task3Score,settask3Score] = useState(4);
+  const [task4Score,settask4Score] = useState(4);
+
+
+
     const [taskInfo,setTaskInfo] = useState({})
   useEffect(()=>{
     getTaskInfo(2).then(res=>{
       setTaskInfo(res)
 
     }).catch(err=>{
-      setTaskInfo({err:"hai"})
+      setTaskInfo({err:"err"})
     })
     
   },[])
+//function to reduce the taskscore if user used the hint of a specefic task
+  function reduceScore(taskIndex){
+
+    const task={
+      1:settask1Score,
+      2:settask2Score,
+      3:settask3Score,
+      4:settask4Score
+    }
+    //reduce the taskscore or appropriate task
+    task[taskIndex](2);
+  }
+
 
   return (
     <div className='flex flex-col items-center'>
       <TopHeaderBar/>
       <div className='w-3/4 flex flex-col items-center' >
-        <ThumbnailHeader Thumbnail={Thumbnail} title={"Learn Linux Commands"} index={"02"} />
+        <ThumbnailHeader Thumbnail={Thumbnail} title={module2Name} index={"02"} />
        
           
           <motion.div
@@ -110,8 +134,8 @@ function Module2() {
                 <h1 className='content-1'>&#8226; go to hiddenFolder -&gt; thekeyishere</h1>
                 <h1 className="content-1">&#8226;   then open the hidden file inside</h1>
 
-                <TerminalHint body={["cd hiddenFolder","cd thekeyishere","cat .secretkey"]} />
-                <Module1Input taskIndex={1} status={taskInfo.task1 || false}/>
+                <TerminalHint reduceScore={reduceScore} taskIndex={1} body={["cd hiddenFolder","cd thekeyishere","cat .secretkey"]} />
+                <Module2Input score={task1Score} taskIndex={1} status={taskInfo.task1 || false}/>
 
               </div>
 
@@ -126,8 +150,8 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; The key is hidden inside a file.</h1>
                 <h1 className="content-1">&#8226; Use <snap className="bg-yellow-500 p-1">grep</snap>  to search for the word "L1Xs" inside all files.</h1>
-                <TerminalHint body={["cat * | grep L1Xs"]} />
-                <Module1Input taskIndex={2} status={taskInfo.task2 || false}/>
+                <TerminalHint reduceScore={reduceScore} taskIndex={2} body={["cat * | grep L1Xs"]} />
+                <Module2Input score={task2Score} taskIndex={2} status={taskInfo.task2 || false}/>
                </div>
 
                {/* task 3 */}
@@ -141,9 +165,9 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; The key is buried deep in folders.</h1>
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">find</snap> to locate a file named secretKey.txt</h1>
-                <TerminalHint body={["find ./* -name secretKey.txt"]} />
+                <TerminalHint  reduceScore={reduceScore} taskIndex={3} body={["find ./* -name secretKey.txt"]} />
 
-                <Module1Input taskIndex={3} status={taskInfo.task3 || false}/>
+                <Module2Input score={task3Score} taskIndex={3} status={taskInfo.task3 || false}/>
                </div>
 
                  {/* task 3 */}
@@ -157,9 +181,9 @@ function Module2() {
                 <h1 className="head-3">Instructions:</h1>
                 <h1 className='content-1'>&#8226; A compressed file (secretKey.tar.gz) contains the key.</h1>
                 <h1 className="content-1">&#8226;  Use <snap className="bg-yellow-500 p-1">tar</snap> to extract the folder</h1>
-                <TerminalHint body={["tar -xzf secretKey.tar.gz","cat secretKey.txt"]} />
+                <TerminalHint reduceScore={reduceScore} taskIndex={4} body={["tar -xzf secretKey.tar.gz","cat secretKey.txt"]} />
 
-                <Module1Input taskIndex={4} status={taskInfo.task4 || false}/>
+                <Module2Input score={task4Score} taskIndex={4} status={taskInfo.task4 || false}/>
                </div>
 
                
@@ -170,7 +194,6 @@ function Module2() {
 
           </motion.div>
         
-      
       
       </div>
      
